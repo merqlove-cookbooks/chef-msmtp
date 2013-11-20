@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: ssmtp
-# Attributes:: ssmtp
+# Cookbook Name:: msmtp
+# Attributes:: msmtp
 #
 # Copyright 2009, Sander van Zoest
 # Copyright 2012, Mike Adolphs
@@ -18,18 +18,18 @@
 # limitations under the License.
 #
 
-default['ssmtp']['mailhub_name'] = 'localhost'
-default['ssmtp']['mailhub_port'] = 587
-default['ssmtp']['hostname'] = node['hostname']
-default['ssmtp']['rewrite_domain'] = node['domain']
+default['msmtp']['mailhub_name'] = 'localhost'
+default['msmtp']['mailhub_port'] = 587
+default['msmtp']['hostname'] = node['hostname']
+default['msmtp']['rewrite_domain'] = node['domain']
 
-default['ssmtp']['from_line_override'] = true
+default['msmtp']['from_line_override'] = true
 
-default['ssmtp']['credential_method'] = 'data_bag'         # or plain
+default['msmtp']['credential_method'] = 'data_bag'         # or plain
 
-default['ssmtp']['root'] = false
-default['ssmtp']['auth_method'] = false
-default['ssmtp']['auth_username'] = false
-default['ssmtp']['auth_password'] = false
-default['ssmtp']['use_starttls'] = true
-default['ssmtp']['use_tls'] = true
+default['msmtp']['root'] = false
+default['msmtp']['auth_method'] = false
+default['msmtp']['auth_username'] = false
+default['msmtp']['auth_password'] = false
+default['msmtp']['use_starttls'] = true
+default['msmtp']['use_tls'] = true

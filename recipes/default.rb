@@ -18,26 +18,22 @@
 # limitations under the License.
 #
 
-if platform?('redhat', 'centos', 'fedora')
-  include_recipe 'yum::epel'
-end
-
-package "ssmtp" do
+package "msmtp" do
   action :upgrade
 end
 
-case node['ssmtp']['credential_method']
+case node['msmtp']['credential_method']
 when 'data_bag'
-  data_bag = Chef::EncryptedDataBagItem.load('mail', 'ssmtp')
+  data_bag = Chef::EncryptedDataBagItem.load('mail', 'msmtp')
   username = data_bag['username']
   password = data_bag['password']
 when 'plain'
-  username = node['ssmtp']['auth_username']
-  password = node['ssmtp']['auth_password']
+  username = node['msmtp']['auth_username']
+  password = node['msmtp']['auth_password']
 end
 
-template "/etc/ssmtp/ssmtp.conf" do
-  source "ssmtp.conf.erb"
+template "/etc/msmtp/msmtp.conf" do
+  source "msmtp.conf.erb"
   owner "root"
   group "mail"
   mode  0640
