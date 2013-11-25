@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: msmtp
-# Recipe:: default
+# Definition:: accounts
 #
 # Copyright (C) 2013 Alexander Merkulov
 # 
@@ -17,29 +17,14 @@
 # limitations under the License.
 #
 
-package "msmtp" do
-  action :upgrade
+define :accounts do  
+  node['msmtp']['accounts'].each do |user, config|
+    template "/home/#{user}/.msmtprc" do
+      source "msmtprc.erb"
+      owner user
+      group user
+      mode  0600
+      variables(:config => config)
+    end
+  end
 end
-
-# case node['msmtp']['credential_method']
-# when 'data_bag'
-#   data_bag = Chef::EncryptedDataBagItem.load('mail', 'msmtp')
-#   username = data_bag['username']
-#   password = data_bag['password']
-# when 'plain'
-#   username = node['msmtp']['auth_username']
-#   password = node['msmtp']['auth_password']
-# end
-
-# template "/etc/msmtp/msmtp.conf" do
-#   source "msmtp.conf.erb"
-#   owner "root"
-#   group "mail"
-#   mode  0640
-#   variables(
-#     # :auth_username    => username,
-#     # :auth_password    => password,
-#     :accounts => )
-# end
-
-accounts
