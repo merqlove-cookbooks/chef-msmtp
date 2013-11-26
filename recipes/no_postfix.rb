@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: msmtp
-# Definition:: accounts
+# Recipe:: no_postfix
 #
 # Copyright (C) 2013 Alexander Merkulov
 # 
@@ -17,14 +17,6 @@
 # limitations under the License.
 #
 
-define :accounts do  
-  node['msmtp']['accounts'].each do |user, config|
-    template "/home/#{user}/.msmtprc" do
-      source "msmtprc.erb"
-      owner user
-      group node["msmtp"]["group"]
-      mode  0600
-      variables(:config => config)
-    end
-  end
+service "postfix" do
+  action [:disable, :stop]
 end

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: msmtp
-# Definition:: accounts
+# Definition:: system_config
 #
 # Copyright (C) 2013 Alexander Merkulov
 # 
@@ -17,14 +17,17 @@
 # limitations under the License.
 #
 
-define :accounts do  
-  node['msmtp']['accounts'].each do |user, config|
-    template "/home/#{user}/.msmtprc" do
-      source "msmtprc.erb"
-      owner user
-      group node["msmtp"]["group"]
-      mode  0600
-      variables(:config => config)
-    end
+define :system_config do
+  template node["msmtp"]["config"] do
+    source "msmtprc.erb"
+    owner "root"
+    group "mail"
+    mode  0640
+    variables(:config => {:system => node["msmtp"]})
+  end
+  file node["msmtp"]["log"] do
+    owner "root"
+    group "mail"
+    mode  0660
   end
 end

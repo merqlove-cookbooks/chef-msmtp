@@ -5,7 +5,7 @@
 
 <%- @config.each do |name, acc| %>
   account <%= name %>
-  host <%= acc[:host] || node['msmtp']['hostname'] %>
+  host <%= acc[:host] || node['msmtp']['host'] %>
   from <%= acc[:from] || "noreply@#{node['msmtp']['domain']}" %>
   <%- if acc[:cert] || node['msmtp']['cert'] %>
   tls <%= acc[:tls] || "on" %>

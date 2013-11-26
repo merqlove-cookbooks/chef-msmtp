@@ -26,12 +26,15 @@ else
   cafile = '/etc/postfix/cacert.crt'
 end
 
+default['msmtp']['group'] = "mail"
 default['msmtp']['config'] = '/etc/msmtprc'
+default['msmtp']['log'] = "/var/log/msmtp.log"
 # default['msmtp']['name'] = 'localhost'
 default['msmtp']['port'] = 587
-default['msmtp']['hostname'] = node['hostname']
+default['msmtp']['host'] = node['hostname']
 default['msmtp']['domain'] = node['domain']
 default['msmtp']['cert'] = cafile
+
 # default['msmtp']['credential_method'] = 'data_bag'         # or plain
 
 default['msmtp']['root'] = true
