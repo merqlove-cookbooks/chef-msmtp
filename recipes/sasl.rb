@@ -37,5 +37,3 @@ end
 sasl_pkgs.each do |pkg|
   package pkg
 end
-
-include_recipe "msmtp"
