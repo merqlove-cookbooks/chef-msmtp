@@ -22,14 +22,13 @@ platforms:
 
 suites:
 - name: default
-  run_list: ["recipe[ssmtp]", "recipe[minitest-handler]"]
-  data_bag_path: "test/integration/default/data_bags"
-  encrypted_data_bag_secret_key_path: "test/integration/default/encrypted_data_bag_secret"
+  run_list: ["recipe[msmtp]", "recipe[minitest-handler]"]
   attributes:
-    ssmtp:
-      root: 'user@example.com'
-      rewrite_domain: 'example.com'
-      mailhub_name: 'smtp.example.com'
-      from_line_override: true
-      credential_method: 'data_bag'
-      use_starttls: true
+    msmtp:
+      host: "smtp.gmail.com"
+      port: "587"
+      domain: "example.com"
+      username: "noreply@example.com"
+      from: "noreply@example.com"
+      password: "123456"
+      default: true

@@ -1,4 +1,4 @@
-# Contributing to the SSMTP Cookbook Cookbooks
+# Contributing to the MSMTP Cookbook Cookbooks
 
 We are glad you want to contribute to the cookbook! The first
 step is the desire to improve the project.

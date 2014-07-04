@@ -21,26 +21,5 @@ package "msmtp" do
   action :upgrade
 end
 
-# case node['msmtp']['credential_method']
-# when 'data_bag'
-#   data_bag = Chef::EncryptedDataBagItem.load('mail', 'msmtp')
-#   username = data_bag['username']
-#   password = data_bag['password']
-# when 'plain'
-#   username = node['msmtp']['auth_username']
-#   password = node['msmtp']['auth_password']
-# end
-
-# template "/etc/msmtp/msmtp.conf" do
-#   source "msmtp.conf.erb"
-#   owner "root"
-#   group "mail"
-#   mode  0640
-#   variables(
-#     # :auth_username    => username,
-#     # :auth_password    => password,
-#     :accounts => )
-# end
-
 system_config
 accounts

@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-This is a [Chef](http://www.opscode.com/chef) cookbook for deploying [msmtp](http://linux.die.net/man/8/msmtp). So far it is tested on Debian (6+) only.
+This is a [Chef](http://www.opscode.com/chef) cookbook for deploying [msmtp](http://msmtp.sourceforge.net/doc/msmtp.html). So far it is tested on CentOS (5+) only.
 
 ## Requirements
 
@@ -20,12 +20,12 @@ This is a [Chef](http://www.opscode.com/chef) cookbook for deploying [msmtp](htt
 
 Add it to your Librarian-chef `Cheffile`:
 
-    cookbook 'ssmtp',
-      :git => 'https://github.com/svanzoest/ssmtp-cookbook.git'
+    cookbook 'msmtp',
+      :git => 'https://github.com/merqlove/chef-msmtp.git'
 
 Or clone the cookbook into your local chef repository:
 
-    git clone https://github.com/svanzoest/ssmtp-cookbook.git
+    git clone https://github.com/merqlove/chef-msmtp.git
 
 ### Configuration
 
@@ -37,15 +37,29 @@ Here's an example role:
 	description "Installs mail related applications."
 	# List of recipes and roles to apply. Requires Chef 0.8, earlier versions use 'recipes()'.
 	run_list(
-	  'recipe[ssmtp]'
+	  'recipe[msmtp]'
 	)
 	# Attributes applied if the node doesn't have it set already.
 	default_attributes(
-	  'ssmtp' => {
-	    'root' => 'user@example.com',
-	    'rewrite_domain' => 'example.com',
-	    'mailhub_name' => 'smtp.example.com'
-	  }
+	  'msmtp' => {	    
+	    'host' => 'smtp.gmail.com',
+			'port' => 587,
+			'domain' => 'somehost.com',
+			'username' => 'noreply@somehost.com',
+			'from' => 'noreply@somehost.com',
+			'password' => 'afsasffafa',
+			'default' => true,
+			"accounts" => {
+        "someuser": {
+          "host": "smtp.gmail.com",
+          "port": "587",
+          "domain": "somehost2.com",
+          "username": "noreply@somehost2.com",
+          "from": "noreply@somehost2.com",
+          "password": "sfsgsgsdgdsdg"
+        },
+      },
+	  },	     
 	)
 	# Attributes applied no matter what the node has set already.
 	#override_attributes(
@@ -53,51 +67,16 @@ Here's an example role:
 
 For a full list of attributes please consult `./attributes/default.rb`.
 
-#### Authentication
-	
-The cookbook provides an attribute called `credential_method` which defines whether authentication credentials are provided in a crypted data bag or via plain text. It defaults to the more secure crypto data bag method.
-
-Available options are:
-
-* data_bag
-* plain
-
-##### Creating the data bag
-
-	|ruby-1.9.3-p194@hosted-chef| nb-madolphs in ~/Development/Personal/Repositories/hosted-chef
-	± |master ✓| → knife data bag create --secret-file .chef/encrypted_data_bag_secret mail ssmtp
-	Created data_bag[mail]
-	Created data_bag_item[ssmtp]		
-	
-	|ruby-1.9.3-p194@hosted-chef| nb-madolphs in ~/Development/Personal/Repositories/hosted-chef
-	± |master ✓| → mkdir -p data_bags/mail
-	
-	|ruby-1.9.3-p194@hosted-chef| nb-madolphs in ~/Development/Personal/Repositories/hosted-chef
-	± |master ✓| → knife data bag show mail ssmtp -F json > data_bags/mail/ssmtp.json
-
-##### Viewing the data bag
-
-	± |master ✗| → knife data bag show --secret-file .chef/encrypted_data_bag_secret mail ssmtp
-	id:        ssmtp
-	password:  foobar
-	username:  user@example.com
-	
-	± |master ✗| → knife data bag show --secret-file .chef/encrypted_data_bag_secret -F json mail ssmtp
-	{
-	  "username": "user@example.com",
-	  "id": "ssmtp",
-	  "password": "foobar"
-	}
-
 ## Development
 
-* Source hosted at [GitHub](https://github.com/svanzoest/ssmtp-cookbook)
-* Report issues/Questions/Feature requests on [GitHub](https://github.com/svanzoest/ssmtp-cookbook/issues) as well
+* Source hosted at [GitHub](https://github.com/merqlove/chef-msmtp)
+* Report issues/Questions/Feature requests on [GitHub](https://github.com/merqlove/chef-msmtp/issues) as well
 
 Pull requests are very welcome! Make sure your patches are well tested.
 
 ## License
 
+Copyright © 2013-2014, Alexander Merkulov
 Copyright © 2009-2013, Sander van Zoest  
 Copyright © 2012, Mike Adolphs
 
