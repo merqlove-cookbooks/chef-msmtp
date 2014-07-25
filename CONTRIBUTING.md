@@ -5,7 +5,7 @@ step is the desire to improve the project.
 
 ## Quick-contribute
 
-* Create an issue on the github [issue tracker](https://github.com/svanzoest/sstmp-cookbook/issues)
+* Create an issue on the github [issue tracker](https://github.com/merqlove/chef-msmtp/issues)
 * Link to your patch as a rebased git branch or pull request from the ticket
 
 We regularly review contributions and will get back to you if we have
@@ -16,8 +16,8 @@ any suggestions or concerns.
 You should submit your patch as a git branch named after the change.
 
 It is a best practice to have your commit message have a _summary
-line_, followed by an empty line and then a brief description of 
-the commit. This also helps other contributors understand the 
+line_, followed by an empty line and then a brief description of
+the commit. This also helps other contributors understand the
 purpose of changes to the code.
 
 Remember that not all users use Chef in the same way or on the same
@@ -82,7 +82,7 @@ isn't trivial so we don't have to duplicate effort in testing. Chef
 10.14+ "doc" formatted output is sufficient.
 
 Please do indicate new platform (families) or platform versions in the
-commit message, and update the relevant ticket.  If a contribution adds 
+commit message, and update the relevant ticket.  If a contribution adds
 new platforms or platform versions, indicate such in the body of the commit message(s).
 
 Please do use [foodcritic](http://acrmp.github.com/foodcritic) to

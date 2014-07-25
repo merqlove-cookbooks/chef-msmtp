@@ -1,3 +1,12 @@
+## v0.3.4:
+
+* Updated Chef check tools.
+* Updated development dependencies.
+* Fixed tests.
+* Cleanup.
+* README updates.
+* CONTRIBUTING updates.
+
 ## v0.3.3:
 
 * Ported to MSMTP
@@ -27,4 +36,3 @@
 ## v0.1.0:
 
 * Initial Release
-

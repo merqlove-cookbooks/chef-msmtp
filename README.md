@@ -14,14 +14,31 @@ This is a [Chef](http://www.opscode.com/chef) cookbook for deploying [msmtp](htt
 
 * No dependencies yet
 
+## Recipes
+
+### msmtp::default
+
+Install MSMTP.
+
+### msmtp::config
+
+Run configuration providers.
+
+### msmtp::sasl
+
+Download SASL certs.
+
+### msmtp::no_postfix
+
+Disable postfix daemon at all.
+
 ## Usage
 
 ### Adding the cookbook
 
-Add it to your Librarian-chef `Cheffile`:
+Add it to your Berkshelf `Berksfile`:
 
-    cookbook 'msmtp',
-      :git => 'https://github.com/merqlove/chef-msmtp.git'
+    cookbook 'msmtp', github: 'merqlove/chef-msmtp'
 
 Or clone the cookbook into your local chef repository:
 
@@ -41,7 +58,7 @@ Here's an example role:
 	)
 	# Attributes applied if the node doesn't have it set already.
 	default_attributes(
-	  'msmtp' => {	    
+	  'msmtp' => {
 	    'host' => 'smtp.gmail.com',
 			'port' => 587,
 			'domain' => 'somehost.com',
@@ -59,7 +76,7 @@ Here's an example role:
           "password": "sfsgsgsdgdsdg"
         },
       },
-	  },	     
+	  },
 	)
 	# Attributes applied no matter what the node has set already.
 	#override_attributes(
@@ -76,7 +93,7 @@ Pull requests are very welcome! Make sure your patches are well tested.
 
 ## License
 
-Copyright © 2013-2014, Alexander Merkulov
+Copyright © 2013-2014, Alexander Merkulov  
 Copyright © 2009-2013, Sander van Zoest  
 Copyright © 2012, Mike Adolphs
 

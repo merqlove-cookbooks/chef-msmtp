@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: msmtp
-# Recipe:: no_postfix
+# Recipe:: config
 #
-# Copyright (C) 2013 Alexander Merkulov
+# Copyright (C) 2014 Alexander Merkulov
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +17,5 @@
 # limitations under the License.
 #
 
-service 'postfix' do
-  supports status: true, restart: true, reload: true, start: true, stop: true
-  action [:disable, :stop]
-end
+msmtp_system   'default'
+msmtp_accounts 'users'

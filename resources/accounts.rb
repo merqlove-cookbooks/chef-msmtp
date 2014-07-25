@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: msmtp
-# Recipe:: no_postfix
+# Resource:: accounts
 #
 # Copyright (C) 2013 Alexander Merkulov
 #
@@ -8,7 +8,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#    http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,7 +17,10 @@
 # limitations under the License.
 #
 
-service 'postfix' do
-  supports status: true, restart: true, reload: true, start: true, stop: true
-  action [:disable, :stop]
-end
+actions        :create
+default_action :create
+
+attribute :name,             kind_of: String, name_attribute: true
+attribute :cookbook,         kind_of: String, default: 'msmtp'
+attribute :source,           kind_of: String, default: 'msmtprc.erb'
+attribute :variables,        kind_of: Hash,   default: {}
