@@ -1,5 +1,8 @@
-## v0.3.4:
+## v0.4.0:
 
+* Refactored definitions into providers.
+* Changed postfix installer. Now works without fail.
+* Moved configuration part into config recipe.
 * Updated Chef check tools.
 * Updated development dependencies.
 * Fixed tests.
