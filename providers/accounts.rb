@@ -18,6 +18,8 @@
 #
 
 action :create do
+  return unless node['msmtp']['accounts']
+  
   node['msmtp']['accounts'].each do |user, config|
     template "/home/#{user}/.msmtprc" do
       source   new_resource.source
@@ -32,5 +34,6 @@ action :create do
       end
     end
   end
+  
   new_resource.updated_by_last_action(true)
 end
