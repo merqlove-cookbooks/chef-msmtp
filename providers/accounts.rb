@@ -20,7 +20,7 @@
 action :create do
   accounts = node['msmtp']['accounts'] || {}
 
-  node['msmtp']['accounts'].each do |user, config|
+  accounts.each do |user, config|
     template "/home/#{user}/.msmtprc" do
       source   new_resource.source
       cookbook new_resource.cookbook
