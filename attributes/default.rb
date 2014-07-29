@@ -44,3 +44,7 @@ default['msmtp']['root'] = true
 # default['msmtp']['use_starttls'] = true
 # default['msmtp']['use_tls'] = true
 default['msmtp']['accounts'] = {}
+
+default['msmtp']['version'] = '1.4.32'
+default['msmtp']['checksum'] = '03186a70035dbbf7a31272a20676b96936599704'
+default['msmtp']['url'] = "http://switch.dl.sourceforge.net/project/msmtp/msmtp/#{node['msmtp']['version']}/msmtp-#{node['msmtp']['version']}.tar.bz2"
