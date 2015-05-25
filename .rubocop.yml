@@ -9,3 +9,13 @@ SingleSpaceBeforeFirstArg:
 
 TrailingComma:
   Enabled: false
+
+Style/LeadingCommentSpace:
+  Exclude:
+    - 'Berksfile'
+
+AllCops:
+  Exclude:
+    - 'Berksfile'
+    - 'Vagrantfile'
+    - '.kitchen/**/*'
