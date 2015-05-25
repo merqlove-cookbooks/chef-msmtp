@@ -47,4 +47,4 @@ default['msmtp']['accounts'] = {}
 
 default['msmtp']['version'] = '1.4.32'
 default['msmtp']['checksum'] = '03186a70035dbbf7a31272a20676b96936599704'
-default['msmtp']['url'] = "http://switch.dl.sourceforge.net/project/msmtp/msmtp/#{node['msmtp']['version']}/msmtp-#{node['msmtp']['version']}.tar.bz2"
+default['msmtp']['url'] = "http://downloads.sourceforge.net/project/msmtp/msmtp/#{node['msmtp']['version']}/msmtp-#{node['msmtp']['version']}.tar.bz2"
