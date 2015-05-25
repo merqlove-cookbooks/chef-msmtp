@@ -46,5 +46,5 @@ default['msmtp']['root'] = true
 default['msmtp']['accounts'] = {}
 
 default['msmtp']['version'] = '1.4.32'
-default['msmtp']['checksum'] = '03186a70035dbbf7a31272a20676b96936599704'
+default['msmtp']['checksum'] = '2bf0c5c7e78f9905f48de235a75111a1a88238793043bbeae00360b22f1a5f88'
 default['msmtp']['url'] = "http://downloads.sourceforge.net/project/msmtp/msmtp/#{node['msmtp']['version']}/msmtp-#{node['msmtp']['version']}.tar.bz2"
