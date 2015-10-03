@@ -71,6 +71,8 @@ Here's an example role:
 	# Attributes applied if the node doesn't have it set already.
 	default_attributes(
 	  'msmtp' => {
+      'install_method' => 'package',
+      'binary' => '/usr/bin/msmtp',
 	    'host' => 'smtp.gmail.com',
 			'port' => 587,
 			'domain' => 'somehost.com',
