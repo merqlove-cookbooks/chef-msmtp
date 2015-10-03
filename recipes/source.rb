@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: msmtp
-# Recipe:: default
+# Recipe:: source
 #
 # Copyright (C) 2015 Alexander Merkulov
 #
@@ -17,4 +17,20 @@
 # limitations under the License.
 #
 
-include_recipe "msmtp::#{node['msmtp']['install_method']}"
+remote_file "#{Chef::Config[:file_cache_path]}/msmtp-#{node['msmtp']['version']}.tar.bz2" do
+  source   node['msmtp']['url']
+  checksum node['msmtp']['checksum']
+  action   :create
+  notifies :run, 'bash[compile_msmtp_from_source]', :immediately
+end
+
+bash 'compile_msmtp_from_source' do
+  cwd Chef::Config[:file_cache_path]
+  code <<-EOH
+    tar -xjvf msmtp-#{node['msmtp']['version']}.tar.bz2
+    cd msmtp-#{node['msmtp']['version']}
+    ./configure; make; make install
+  EOH
+  environment 'PREFIX' => '/usr/local'
+  action :nothing
+end

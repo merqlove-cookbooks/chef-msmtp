@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-This is a [Chef](http://www.opscode.com/chef) cookbook for deploying [msmtp](http://msmtp.sourceforge.net/doc/msmtp.html). So far it is tested on CentOS (5+) only.
+This is a [Chef](http://www.opscode.com/chef) cookbook for deploying [msmtp](http://msmtp.sourceforge.net/doc/msmtp.html). So far it is tested on CentOS (5,6,7).
 
 ## Requirements
 
@@ -19,6 +19,18 @@ This is a [Chef](http://www.opscode.com/chef) cookbook for deploying [msmtp](htt
 ### msmtp::default
 
 Install MSMTP.
+
+### msmtp::default
+
+Default installation (package).
+
+### msmtp::source
+
+Installation from sources.
+
+### msmtp::package
+
+Installation from package.
 
 ### msmtp::config
 

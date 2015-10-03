@@ -26,6 +26,8 @@ else
   cafile = '/etc/postfix/cacert.crt'
 end
 
+default['msmtp']['install_method'] = 'package'
+default['msmtp']['binary'] = '/usr/bin/msmtp'
 default['msmtp']['group'] = 'mail'
 default['msmtp']['config'] = '/etc/msmtprc'
 default['msmtp']['log'] = '/var/log/msmtp.log'

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: msmtp
-# Recipe:: default
+# Recipe:: package
 #
 # Copyright (C) 2015 Alexander Merkulov
 #
@@ -17,4 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe "msmtp::#{node['msmtp']['install_method']}"
+package 'msmtp' do
+  action :upgrade
+end
