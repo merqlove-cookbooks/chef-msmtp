@@ -10,7 +10,7 @@
   <%- if acc[:cert] || node['msmtp']['cert'] %>
   tls <%= acc[:tls] || "on" %>
   tls_starttls <%= acc[:starttls] || "on" %>
-  tls_force_sslv3 <%= acc[:sslv3] || "on" %>
+  tls_force_sslv3 <%= acc[:sslv3] || "off" %>
   tls_trust_file <%= acc[:cert] || node['msmtp']['cert'] %>
   <%- end %>
   protocol smtp

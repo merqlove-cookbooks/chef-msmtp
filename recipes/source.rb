@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-remote_file "#{Chef::Config[:file_cache_path]}/msmtp-#{node['msmtp']['version']}.tar.bz2" do
+remote_file "#{Chef::Config[:file_cache_path]}/#{node['msmtp']['source_file']}" do
   source   node['msmtp']['url']
   checksum node['msmtp']['checksum']
   action   :create
@@ -27,10 +27,10 @@ end
 bash 'compile_msmtp_from_source' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
-    tar -xjvf msmtp-#{node['msmtp']['version']}.tar.bz2
+    tar -xvf #{node['msmtp']['source_file']}
     cd msmtp-#{node['msmtp']['version']}
     ./configure; make; make install
   EOH
-  environment 'PREFIX' => '/usr/local'
+  environment 'PREFIX' => node['msmtp']['prefix']
   action :nothing
 end

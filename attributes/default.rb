@@ -27,15 +27,24 @@ else
 end
 
 default['msmtp']['install_method'] = 'package'
-default['msmtp']['binary'] = '/usr/bin/msmtp'
-default['msmtp']['group'] = 'mail'
-default['msmtp']['config'] = '/etc/msmtprc'
-default['msmtp']['log'] = '/var/log/msmtp.log'
+
+if node['msmtp']['install_method'] == 'source'
+  default['msmtp']['prefix']        = '/usr/local'
+  default['msmtp']['config_prefix'] = node['msmtp']['prefix']
+else
+  default['msmtp']['prefix']        = '/usr'
+  default['msmtp']['config_prefix'] = ''
+end
+
+default['msmtp']['binary'] = "#{node['msmtp']['prefix']}/bin/msmtp"
+default['msmtp']['group']  = 'mail'
+default['msmtp']['config'] = "#{node['msmtp']['prefix']}/etc/msmtprc"
+default['msmtp']['log']    = '/var/log/msmtp.log'
 # default['msmtp']['name'] = 'localhost'
-default['msmtp']['port'] = 587
-default['msmtp']['host'] = node['hostname']
+default['msmtp']['port']   = 587
+default['msmtp']['host']   = node['hostname']
 default['msmtp']['domain'] = node['domain']
-default['msmtp']['cert'] = cafile
+default['msmtp']['cert']   = cafile
 
 # default['msmtp']['credential_method'] = 'data_bag'         # or plain
 
@@ -47,6 +56,7 @@ default['msmtp']['root'] = true
 # default['msmtp']['use_tls'] = true
 default['msmtp']['accounts'] = {}
 
-default['msmtp']['version'] = '1.4.32'
-default['msmtp']['checksum'] = '2bf0c5c7e78f9905f48de235a75111a1a88238793043bbeae00360b22f1a5f88'
-default['msmtp']['url'] = "http://downloads.sourceforge.net/project/msmtp/msmtp/#{node['msmtp']['version']}/msmtp-#{node['msmtp']['version']}.tar.bz2"
+default['msmtp']['version'] = '1.6.5'
+default['msmtp']['checksum'] = '76a0d60693c7e65d0c7a12f01d300882d280b1e1be0202f54730ae44d44a5006'
+default['msmtp']['source_file'] = "msmtp-#{node['msmtp']['version']}.tar.xz"
+default['msmtp']['url'] = "http://downloads.sourceforge.net/project/msmtp/msmtp/#{node['msmtp']['version']}/#{node['msmtp']['source_file']}"
