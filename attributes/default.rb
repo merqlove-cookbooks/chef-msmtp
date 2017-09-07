@@ -38,7 +38,7 @@ end
 
 default['msmtp']['binary'] = "#{node['msmtp']['prefix']}/bin/msmtp"
 default['msmtp']['group']  = 'mail'
-default['msmtp']['config'] = "#{node['msmtp']['prefix']}/etc/msmtprc"
+default['msmtp']['config'] = "#{node['msmtp']['config_prefix']}/etc/msmtprc"
 default['msmtp']['log']    = '/var/log/msmtp.log'
 # default['msmtp']['name'] = 'localhost'
 default['msmtp']['port']   = 587
